@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wxk.nestedscrollingtest.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <!-- app:layout_scrollFlags="scroll|enterAlways" -->
+        <!-- 这句话的作用：向上滑动的时候Toolbar消失，向下滑的时候ToolBar立即出现 -->
+        <!-- 如果没有scroll的话向上滑动Toolbar不会消失 -->
+        <!-- 如果没有enterAlways的话向下滑动Toolbar不会立即出现，会有短暂的延迟 -->
+
+
+        <!-- android:minHeight="?attr/actionBarSize"（默认为此） 设置Toolbar的NavigationIcon位置 -->
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可以添加多个view，会挤压标题栏"
+                android:textColor="#ffffff"/>
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--NestedListView需要加上这个属性,否则会出现第一条item被Toolbar挡住的情况-->
+    <com.wxk.nestedscrollingtest.NestedListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </com.wxk.nestedscrollingtest.NestedListView>
+
+</android.support.design.widget.CoordinatorLayout>
